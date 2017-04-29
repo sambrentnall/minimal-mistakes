@@ -13,7 +13,9 @@ share: true
 header:
    image: /assets/images/home-banner.jpg
 ---
-## Hyper-V Swich
+why am i doing this.....
+
+### Hyper-V Swich
 1. Create an External switch connected to the External Network 
 2. Create an Internal switch on a Priavate network
 
