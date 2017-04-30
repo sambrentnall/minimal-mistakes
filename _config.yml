@@ -86,7 +86,7 @@ author:
   bitbucket        :
   codepen          :
   dribbble         :
-  flickr           :
+  flickr           : "j4bba_g"
   facebook         :
   foursquare       :
   github           : "sambrentnall"
@@ -94,7 +94,7 @@ author:
   keybase          :
   instagram        : "sambrentnall"
   lastfm           :
-  linkedin         :
+  linkedin         : "sam-brentnall"
   pinterest        :
   soundcloud       :
   stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)
@@ -172,7 +172,7 @@ sass:
 
 # Outputting
 permalink: /:categories/:title/
-paginate: 1 # amount of posts to show
+paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 timezone:  http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
