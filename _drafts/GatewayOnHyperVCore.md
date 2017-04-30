@@ -3,15 +3,16 @@ layout: single
 title: Create a Gateway Router in Hyper-V on Windows Server 2016 Core
 #excerpt: "Because"
 tags: [Test]
-last_modified_at: 2017-04-30 00:00:00
-date: 2017-04-29 00:00:00
+date: 2017-04-28 00:00:00
+last_modified_at: 2017-04-29 00:00:00
 comments: false
 share: true
-#image:
+header:
+  image: /assets/images/home-banner.jpg
+  caption: "Photo download: [Flickr](https://flic.kr/p/T6saUn)"
+  #image:
 #  feature: /assets/images/home-banner.jpg
 #  thumb: /assets/logo.png
-header:
-   image: /assets/images/home-banner.jpg
 ---
 why am i doing this.....
 
