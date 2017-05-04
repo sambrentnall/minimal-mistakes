@@ -3,7 +3,7 @@ layout: single
 title: Creating a Windows Server 2016 Core Gateway Router
 #excerpt: "Because"
 tags: [WindowsServer2016, ServerCore, Powershell]
-date: 2017-04-28 00:00:00
+date: 2017-05-04 00:00:00
 # last_modified_at: 2017-04-29 00:00:00
 comments: false
 share: true
@@ -27,35 +27,39 @@ Assumptions:
 
 # Setting up the server
 1. On first boot you'll be presented with a prompt asking to configure the Administrator password
+
+   ![FirstBoot](/assets/images/posts/GatewayOnHyperVCore/FirstBoot.jpg)
+
 2. We now need to go into a powershell session
 
-```cmd
-Powershell.exe
-```
+   ```cmd
+   > Powershell.exe
+   ```
+   ![FirstBoot](/assets/images/posts/GatewayOnHyperVCore/Powershell.jpg)
 
 3. Next we need to name the computer
 
-```Powershell
-Rename-Computer -Name GW
-```
-1. Get-NetIPConfig
-1. Rename-NetAdapter -Name Ethernet -NewName External
-1. Rename-NetAdapter -Name "Ethernet 2" -NewName Internal
-1. New-NetIPAddress -InterfaceAlias "Internal" -IPAddress 172.0.0.1 -PrefixLength 24
-1. Set-DnsClientServerAddress -InterfaceAlias Internal -ServerAddresses 172.0.0.10, 192.168.1.1
-1. Test-NetConnection
-1. Restart-Computer
-1. Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -Enabl
+   ```Powershell
+   > Rename-Computer -Name GW
+   ```
+4. Get-NetIPConfig
+5. Rename-NetAdapter -Name Ethernet -NewName External
+6. Rename-NetAdapter -Name "Ethernet 2" -NewName Internal
+7. New-NetIPAddress -InterfaceAlias "Internal" -IPAddress 172.0.0.1 -PrefixLength 24
+8. Set-DnsClientServerAddress -InterfaceAlias Internal -ServerAddresses 172.0.0.10, 192.168.1.1
+9. Test-NetConnection
+10. Restart-Computer
+11. Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -Enabl
 ed True
-1. Install-WindowsFeature Routing, RSAT-RemoteAccess-PowerShell
-1. Restart-Computer
-1. Install-RemoteAccess -VpnType Vpn
+12. Install-WindowsFeature Routing, RSAT-RemoteAccess-PowerShell
+13. Restart-Computer
+14. Install-RemoteAccess -VpnType Vpn
 
 exit out of powershell here and enter NETSH
 
 1. netsh routing ip nat add interface External
-1. netsh routing ip nat set interface External mode=full
-1. netsh routing ip nat add interface Internal
+2. netsh routing ip nat set interface External mode=full
+3. netsh routing ip nat add interface Internal
 
 If you want to disable ipv6
 Disable-NetAdaptorBinding -InterfaceAlias Ethernet -computerID ms
