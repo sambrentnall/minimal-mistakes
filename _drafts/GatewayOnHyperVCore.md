@@ -14,9 +14,11 @@ header:
 #  feature: /assets/images/home-banner.jpg
 #  thumb: /assets/logo.png
 ---
-why am i doing this.....
+I seem to spin up a lot of Virtual Lab's and to get network connectivity to the machines within the lab and simulate a larger environment you would normally create a virtual router with at least 2 nics, one connected to your phisical network and one connected to the virtual swich. I normally use pfSense as my virtual router of choise but decided recently to create a Windows Server 2016 Core Vritual Router.
 
-### Hyper-V Swich
+This isnt the first time I'e installed or used Windows Server Core, in a prviouse lab ive used it for a DC but i've not had much experience with it and this is was the first time i've used Windows Server for a router let alone on Core.
+
+## Hyper-V Swich
 1. Create an External switch connected to the External Network 
 2. Create an Internal switch on a Priavate network
 
@@ -62,7 +64,6 @@ Disable-NetAdaptorBinding -InterfaceAlias Ethernet -computerID ms
 
 Thanks to:
 http://deploymentresearch.com/Research/Post/387/Install-a-Virtual-Router-based-on-Windows-Server-2012-R2-using-PowerShell
-
 http://deploymentresearch.com/Research/Post/285/Using-a-virtual-router-for-your-lab-and-test-environment
-
 https://www.howtogeek.com/112660/how-to-change-your-ip-address-using-powershell/
+https://blogs.technet.microsoft.com/bruce_adamczak/2013/01/15/2012-core-survival-guide/
