@@ -62,7 +62,7 @@ Assumptions:
 1. Next we'll configure and validate the internal network adaptors IP details, DNS Addresses and disable IPv6 for both adaptors. I'm setting my DNS addresses to 172.0.0.10 as this will be my DC and 192.168.1.254 as this is my external router 
 
    ```Powershell
-   > Sew-NetIPAddress -InterfaceAlias Internal -IPAddress 172.0.0.1 -PrefixLength 24
+   > New-NetIPAddress -InterfaceAlias Internal -IPAddress 172.0.0.1 -PrefixLength 24
    > Set-DnsClientServerAddress -InterfaceAlias Internal -ServerAddresses 172.0.0.10, 192.168.1.1
    > Disable-NetAdaptorBinding -Name Internal, External -ComponentID ms_tcpip6
    > Get-NetAdaptorBinding -Name Internal, External -ComponentID ms_tcpip6
@@ -86,10 +86,10 @@ Assumptions:
    > Enable-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)"
    ```
   
-1. Next we need to install the Routing Windows Feature plus the management tools and reboot the computer
+1. Next we need to install the Routing Windows Feature plus the management tools and then reboot the computer
 
    ```Powershell
-   > Install-WindowsFeature Routing -InludeAllSubFeature -IncludeManagementTools
+   > Install-WindowsFeature Routing -IncludeAllSubFeature -IncludeManagementTools
    > Restart-Computer
    ```
    ![InstallFeature](/assets/images/posts/GatewayOnHyperVCore/InstallFeature.jpg)
@@ -99,19 +99,29 @@ Assumptions:
    ```Powershell
    > Install-RemoteAccess -VpnType Vpn
    ```
+   ![InstallRemoreAccess](/assets/images/posts/GatewayOnHyperVCore/InstallRemoreAccess.jpg)
 
-exit out of powershell here and enter NETSH
+1. We now need to enter a NETSH session
 
-1. netsh routing ip nat add interface External
-2. netsh routing ip nat set interface External mode=full
-3. netsh routing ip nat add interface Internal
+   ```Powershell
+   > NETSH
+   ```
+1. The final step is to add some routing rules, were going to add the two interfaces and configure the external mode
 
-If you want to disable ipv6
-Disable-NetAdaptorBinding -InterfaceAlias Ethernet -ComponentID ms_tcpip6
+   ```NETSH
+   > routing ip nat add interface External
+   > routing ip nat set interface External mode=full
+   > routing ip nat add interface Internal
+   ```
+   ![NETSH](/assets/images/posts/GatewayOnHyperVCore/NETSH.jpg)
+
+## Validation
+
+We can validate the config by creating a second VM with or without a GUI. Configuring the IP address inside the 172.0.0.0/24 range with a default gateway of the GW we've just configured (172.0.0.1) and the DNS address of your external router. We then use the the Test-NetConnection Powershell command to confirm external access.
 
 
-Thanks to:
-http://deploymentresearch.com/Research/Post/387/Install-a-Virtual-Router-based-on-Windows-Server-2012-R2-using-PowerShell
-http://deploymentresearch.com/Research/Post/285/Using-a-virtual-router-for-your-lab-and-test-environment
-https://www.howtogeek.com/112660/how-to-change-your-ip-address-using-powershell/
-https://blogs.technet.microsoft.com/bruce_adamczak/2013/01/15/2012-core-survival-guide/
+   ![ConfigInternet](/assets/images/posts/GatewayOnHyperVCore/ConfirmInternet.jpg)
+
+Thats it, you've now configured a Virtual Router on Windows Server 2016 Core.
+
+Thanks to the [2012 Core Survival Guide](https://blogs.technet.microsoft.com/bruce_adamczak/2013/01/15/2012-core-survival-guide/) and Deployment Researches guides on [setting up a virtual router](http://deploymentresearch.com/Research/Post/285/Using-a-virtual-router-for-your-lab-and-test-environment) and [setting up a virtual router using powershell](http://deploymentresearch.com/Research/Post/387/Install-a-Virtual-Router-based-on-Windows-Server-2012-R2-using-PowerShell).
