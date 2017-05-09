@@ -29,7 +29,7 @@ Assumptions:
 
 1. On first boot you'll be presented with a prompt asking to configure the Administrator password.
 
-   ![FirstBoot](/assets/images/posts/GatewayOnHyperVCore/FirstBoot.jpg)
+   ![FirstBoot](/assets/images/posts/gatewayonhypervcore/firstboot.jpg)
 
 1. We'll be doing most of the work in Powershell so we need to launch it.
 
