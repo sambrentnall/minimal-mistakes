@@ -29,14 +29,14 @@ Assumptions:
 
 1. On first boot you'll be presented with a prompt asking to configure the Administrator password.
 
-   ![FirstBoot](/assets/images/posts/gatewayonhypervcore/firstboot.jpg)
+   ![FirstBoot](/assets/images/gatewayonhypervcore/firstboot.jpg)
 
 1. We'll be doing most of the work in Powershell so we need to launch it.
 
    ```cmd
    > Powershell.exe
    ```
-   ![FirstBoot](/assets/images/posts/GatewayOnHyperVCore/Powershell.jpg)
+   ![FirstBoot](/assets/images/GatewayOnHyperVCore/Powershell.jpg)
 
 1. First lets name the computer (ignore the prompt about rebooting, we'll do this after configuring the machine).
 
@@ -49,7 +49,7 @@ Assumptions:
    ```Powershell
    > Get-NetIPConfiguration
    ```
-   ![GetNetIPConfig](/assets/images/posts/GatewayOnHyperVCore/GetNetIPConfig.jpg)
+   ![GetNetIPConfig](/assets/images/GatewayOnHyperVCore/GetNetIPConfig.jpg)
       
 1. We then want to rename the adaptors using Rename-NetAdaptor. Using the -Name switch to pass the current names that we found in the previous step. Then use Get-NetIPConfiguration again to confirm.
 
@@ -58,7 +58,7 @@ Assumptions:
    > Rename-NetAdapter -Name "Ethernet 2" -NewName Internal
    > Get-NetIPConfiguration
    ```
-   ![RenameNetAdaptor](/assets/images/posts/GatewayOnHyperVCore/RenameNetAdaptor.jpg)
+   ![RenameNetAdaptor](/assets/images/GatewayOnHyperVCore/RenameNetAdaptor.jpg)
 
 1. Next we'll configure and validate the internal network adaptors IP details, DNS Addresses, and disable IPv6 for both adaptors. I'm setting my DNS addresses to 172.0.0.10 as this will be my DC, and 192.168.1.254 as this is my external router. 
 
@@ -70,7 +70,7 @@ Assumptions:
    > Get-NetIPConfiguration
    > Test-NetConnection
    ```
-   ![SetAdaptorSettings](/assets/images/posts/GatewayOnHyperVCore/SetAdaptorSettings.jpg)
+   ![SetAdaptorSettings](/assets/images/GatewayOnHyperVCore/SetAdaptorSettings.jpg)
 
 1. The last step is to reboot the computer.
 
@@ -93,14 +93,14 @@ Assumptions:
    > Install-WindowsFeature Routing -IncludeAllSubFeature -IncludeManagementTools
    > Restart-Computer
    ```
-   ![InstallFeature](/assets/images/posts/GatewayOnHyperVCore/InstallFeature.jpg)
+   ![InstallFeature](/assets/images/GatewayOnHyperVCore/InstallFeature.jpg)
 
 1. Once rebooted, re-login and launch Powershell to install the router.
 
    ```Powershell
    > Install-RemoteAccess -VpnType Vpn
    ```
-   ![InstallRemoteAccess](/assets/images/posts/GatewayOnHyperVCore/InstallRemoreAccess.jpg)
+   ![InstallRemoteAccess](/assets/images/GatewayOnHyperVCore/InstallRemoreAccess.jpg)
 
 1. We now need to enter a NETSH session.
 
@@ -114,14 +114,14 @@ Assumptions:
    > routing ip nat set interface External mode=full
    > routing ip nat add interface Internal
    ```
-   ![NETSH](/assets/images/posts/GatewayOnHyperVCore/NETSH.jpg)
+   ![NETSH](/assets/images/GatewayOnHyperVCore/NETSH.jpg)
 
 ## Validation
 
 We can validate the config by creating a second VM with or without a GUI. Configuring the IP address inside the 172.0.0.0/24 range with a default gateway of the GW we've just configured (172.0.0.1), and the DNS address of your external router. We then use the the Test-NetConnection Powershell command to confirm external access.
 
 
-   ![ConfigInternet](/assets/images/posts/GatewayOnHyperVCore/ConfirmInternet.jpg)
+   ![ConfigInternet](/assets/images/GatewayOnHyperVCore/ConfirmInternet.jpg)
 
 Thats it, you should have now configured a Virtual Router on Windows Server 2016 Core. Let me know how it goes!
 
