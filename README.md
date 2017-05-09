@@ -7,6 +7,4 @@ When looking at a blogging platforms I decided to go with a [Jekyll](https://jek
 
 It's also been a good excuse to use VSCode for the first time, and so far, I'm loving it!
 
-Anyway... Welcome! 
-
-test
+Anyway... Welcome!
