@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Creating a Windows Server 2016 Core Gateway Router
+title: Creating a Gateway Router on Windows Server 2016 Core
 #excerpt: "Because"
 tags: [Windows Server 2016, Server Core, Powershell, Routing, Gateway]
 date: 2017-05-09 00:00:00
