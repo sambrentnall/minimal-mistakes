@@ -3,7 +3,7 @@ layout: single
 title: Creating a Windows Server 2016 Core Gateway Router
 #excerpt: "Because"
 tags: [Windows Server 2016, Server Core, Powershell, Routing, Gateway]
-date: 2017-05-08 00:00:00
+date: 2017-05-09 00:00:00
 # last_modified_at: 2017-04-29 00:00:00
 comments: false
 share: true
@@ -100,7 +100,7 @@ Assumptions:
    ```Powershell
    > Install-RemoteAccess -VpnType Vpn
    ```
-   ![InstallRemoreAccess](/assets/images/posts/GatewayOnHyperVCore/InstallRemoreAccess.jpg)
+   ![InstallRemoteAccess](/assets/images/posts/GatewayOnHyperVCore/InstallRemoreAccess.jpg)
 
 1. We now need to enter a NETSH session.
 
