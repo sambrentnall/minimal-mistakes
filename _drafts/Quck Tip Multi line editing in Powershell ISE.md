@@ -15,4 +15,4 @@ header:
 #  thumb: /assets/logo.png
 ---
 
-Hi
+[ISE Multi Line Commenting](/assets/images/quicktipisemultilinecomments/AltShiftSpace3.gif)
