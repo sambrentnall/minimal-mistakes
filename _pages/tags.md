@@ -1,9 +1,10 @@
-
 ---
 layout: archive
 permalink: /tags/
 title: "Posts by Tags"
 author_profile: true
+header:
+  image: /assets/images/home-banner.jpg
 ---
 
 {% include group-by-array collection=site.posts field="tags" %}
