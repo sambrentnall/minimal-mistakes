@@ -19,4 +19,4 @@ A friend showed me this tip the other day. It's really useful for adding multi-l
 1. While holding **alt** and **Shift** press the **up** or **down** arrows to select multiple lines.
 1. Add your desired text.
 
-![ISE Multi Line Commenting](/assets/images/quicktipisemultilinecomments/AltShiftSpace3.gif)
+![ISE Multi Line Commenting](/assets/images/quicktipisemultilinecomments/AltShiftSpace4.gif)
