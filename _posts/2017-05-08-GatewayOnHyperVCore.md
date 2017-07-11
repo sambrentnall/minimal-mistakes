@@ -18,7 +18,7 @@ I seem to spin up a lot of Virtual Labs. To make sure my lab doesn't interfere w
 
 I normally use pfSense as my virtual router of choice, but decided recently to create a router on Windows Server 2016 Core.
 
-This isn't the first time I've installed or used Windows Server Core - in a previous lab I have used it for a DC but I haven't had much experience with it, so this is was the first time I've used Windows Server for a router let alone on Core.
+This isn't the first time I've installed or used Windows Server Core - in a previous lab I have used it for a DC but I haven't had much experience with it. This is the first time I've used Windows Server for a router let alone on Core.
 
 Assumptions: 
 - You've configured your Virtual Switches with one connected to your host's network and at least one private\internal network
