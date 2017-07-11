@@ -41,7 +41,7 @@ Assumptions:
 1. First lets name the computer (ignore the prompt about rebooting, we'll do this after configuring the machine).
 
    ```Powershell
-   > Rename-Computer -Name GW
+   > Rename-Computer -NewName GW
    ```
 
 1. We now want to rename the network adaptors, but to do this, we first need to find out the current names. Use the output from this to double check the MAC addresses with the NICs inside your virtualization software.
